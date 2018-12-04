@@ -12,26 +12,43 @@ echo '1530795694000 2 999999999999 eni-c21b65bf 172.31.24.25 37.157.4.23 4294 44
 ##### output for 11.aws.vpcflowlogs-filter.conf
 ```
 {
-      "@timestamp" => 2018-12-04T22:23:14.791Z,
-         "version" => 2,
-            "type" => "syslog",
-        "@version" => "1",
-            "port" => 54746,
-         "packets" => 12,
-           "start" => 1530785684,
-           "bytes" => 1300,
-    "interface-id" => "eni-c21b65bf",
-         "dstaddr" => "37.157.4.23",
-         "srcport" => 4294,
             "host" => "172.17.0.1",
-      "log-status" => "OK",
-         "srcaddr" => "172.31.24.25",
-          "action" => "ACCEPT",
-        "src_time" => 2018-07-05T13:01:34.000Z,
-      "account-id" => "999999999999",
-        "protocol" => 6,
          "dstport" => 443,
-             "end" => 1530785864
+      "log-status" => "OK",
+         "dstaddr" => "37.157.4.23",
+             "end" => 1530785864,
+           "start" => 1530785684,
+        "@version" => "1",
+    "interface-id" => "eni-c21b65bf",
+      "account-id" => "999999999999",
+         "srcport" => 4294,
+            "type" => "syslog",
+         "version" => 2,
+            "port" => 54764,
+         "packets" => 12,
+        "src_time" => 2018-07-05T13:01:34.000Z,
+            "tags" => [
+        [0] "geoip"
+    ],
+          "action" => "ACCEPT",
+           "bytes" => 1300,
+        "protocol" => 6,
+         "srcaddr" => "172.31.24.25",
+          "dst_ip" => {
+              "latitude" => 55.7123,
+          "country_name" => "Denmark",
+             "longitude" => 12.0564,
+                    "ip" => "37.157.4.23",
+        "continent_code" => "EU",
+              "location" => {
+            "lon" => 12.0564,
+            "lat" => 55.7123
+        },
+         "country_code2" => "DK",
+              "timezone" => "Europe/Copenhagen",
+         "country_code3" => "DK"
+    },
+      "@timestamp" => 2018-12-04T22:55:00.362Z
 }
 ```
 
