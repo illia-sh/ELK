@@ -4,8 +4,39 @@
 ```
 docker run -p 5014:5014 --rm -it -v $(pwd)/pipeline/:/usr/share/logstash/pipeline/ docker.elastic.co/logstash/logstash-oss:6.5.1
 ```
+Send test message to 11.aws.vpcflowlogs-filter.conf
+```
+echo '1530795694000 2 999999999999 eni-c21b65bf 172.31.24.25 37.157.4.23 4294 443 6 12 1300 1530785684 1530785864 ACCEPT OK' > /dev/tcp/127.0.0.1/5014
+```
 
-Send test message for 10.juniper-filter:
+output ofr 11.aws.vpcflowlogs-filter.conf
+```
+{
+      "@timestamp" => 2018-12-04T22:23:14.791Z,
+         "version" => 2,
+            "type" => "syslog",
+        "@version" => "1",
+            "port" => 54746,
+         "packets" => 12,
+           "start" => 1530785684,
+           "bytes" => 1300,
+    "interface-id" => "eni-c21b65bf",
+         "dstaddr" => "37.157.4.23",
+         "srcport" => 4294,
+            "host" => "172.17.0.1",
+      "log-status" => "OK",
+         "srcaddr" => "172.31.24.25",
+          "action" => "ACCEPT",
+        "src_time" => 2018-07-05T13:01:34.000Z,
+      "account-id" => "999999999999",
+        "protocol" => 6,
+         "dstport" => 443,
+             "end" => 1530785864
+}
+```
+
+
+Send test message to 10.juniper-filter:
 ```
 echo '<14>Dec 03 14:59:42 XXXXXXX-1 RT_FLOW: RT_FLOW_SESSION_CREATE: session created 10.0.0.1/48453->8.8.8.8/53 junos-dns-udp 10.0.0.1/48453->8.8.8.8/53 None None 17 my_vlan3 trust untrust 57651 N/A(N/A) reth5.0 UNKNOWN UNKNOWN UNKNOWN' >/dev/tcp/127.0.0.1/5014
 ```
