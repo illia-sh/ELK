@@ -108,6 +108,31 @@ echo '<14>Dec 03 14:59:42 XXXXXXX-1 RT_FLOW: RT_FLOW_SESSION_CREATE: session cre
 }
 ```
 
+##### 12.aws_lambda-filter.conf
+```
+echo 'REPORT RequestId: a069ecd2-97a8-408f-b9f9-de3d1af6810a\tDuration: 337.06 ms\tBilled Duration: 400 ms \tMemory Size: 128 MB\tMax Memory Used: 73 MB\t\' > /dev/tcp/127.0.0.1/5014
+```
+```
+{
+          "host" => "172.17.0.1",
+          "tags" => [
+        [0] "lambda_filtered"
+    ],
+          "port" => 34778,
+          "type" => "syslog",
+      "@version" => "1",
+        "lambda" => {
+            "memory_used" => 73,
+             "request_id" => "a069ecd2-97a8-408f-b9f9-de3d1af6810a",
+        "billed_duration" => 400,
+            "memory_size" => 128,
+               "duration" => 337
+    },
+    "@timestamp" => 2019-01-30T22:14:02.184Z
+}
+```
+
+
 ##### debug inside container
 ```
 docker exec -it $(docker ps | awk '/oss/ {print $1}') /bin/bash
